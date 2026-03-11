@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Danh sách sản phẩm</h2>
+
+<table>
+
+<tr>
+<th>Tên</th>
+<th>Tồn kho</th>
+</tr>
+
+{% for p in products %}
+
+<tr>
+<td>{{p.masp.tensp}}</td>
+<td>{{p.soluongton}}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
+<a href="/cart/add/{{p.maspct}}/">Thêm vào giỏ</a>
+
+<form method="GET">
+
+<input name="q" placeholder="Tìm sản phẩm">
+
+<button>Tìm</button>
+
+</form>

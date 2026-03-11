@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Giỏ hàng</h2>
+
+<table border="1">
+
+<tr>
+<th>Tên sản phẩm</th>
+<th>Số lượng</th>
+<th>Action</th>
+</tr>
+
+{% for item in products %}
+
+<tr>
+
+<td>{{item.product.masp.tensp}}</td>
+
+<td>
+
+<form method="post" action="/cart/update/{{item.product.maspct}}/">
+
+{% csrf_token %}
+
+<input type="number" name="quantity" value="{{item.quantity}}">
+
+<button type="submit">Update</button>
+
+</form>
+
+</td>
+
+<td>
+
+<a href="/cart/remove/{{item.product.maspct}}/">Xóa</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
